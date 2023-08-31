@@ -4,10 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <main>
+        <!-- today blog title -->
+        <h2 class="w-11/12 mx-auto text-5xl text-center font-semibold mt-8 mb-5">Today we know some special topic in <em class="text-[#FF1F3D]">JS</em></h2>
         
+        <!-- var - let - const details -->
+        <article class="w-11/12 mx-auto">
+            <div class="mt-14">
+                <h1 class="text-4xl font-bold text-[#ff1f3ded]">var - let - const</h1>
+                <p class="w-11/12 lg:w-2/3">Actually we use many variables. Especially we use a lot to do math. In programming we use variables a lot. Three variables have been used so far in JSS of time and need. <em>Var, Let, Const</em></p>
+            </div>
+            <h2 class="text-3xl my-5 font-semibold">Now try to know separately</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                <div class="shadow-xl p-5 rounded-lg">
+                    <h2 class="text-4xl text-[#ff1f3ded] my-4">var</h2>
+                    <ul class="list-disc list-inside">
+                        <li>"var" is like an independent variables</li>
+                        <li>If declared within a block - like "an if statement", they are still accessible outside that block.</li>
+                        <li>They can be redeclare within the same scope without error.</li>
+                        <li>"var" is globally scoped, but not block-scoped.</li>
+                    </ul>
+                </div>
+                <div class="shadow-xl p-5 rounded-lg">
+                    <h2 class="text-4xl text-[#ff1f3ded] my-4">let</h2>
+                    <ul class="list-disc list-inside">
+                        <li>"let" is a block-scoped variable </li>
+                        <li>They are not hoisted to the top of the block, so accessing them before their declaration results in a ReferenceError.
+                        </li>
+                        <li>They can be reassigned after declaration within the same scope.</li>
+                        <li>They cannot be redeclare within the same block.</li>
+                    </ul>
+                </div>
+                <div class="shadow-xl p-5 rounded-lg">
+                    <h2 class="text-4xl text-[#ff1f3ded] my-4">var</h2>
+                    <ul class="list-disc list-inside">
+                        <li>"const" is a block-scoped variable </li>
+                        <li>They must be assigned a value at the time of declaration</li>
+                        <li>They cannot be reassigned after declaration, making them suitable for values that should not change.</li>
+                        <li>Like let, they are not hoisted and accessing them before declaration results in a ReferenceError.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- Undefined and Null Use Cases -->
+        <article class="w-11/12 mx-auto mt-10">
+            <h1 class="text-4xl font-bold text-[#ff1f3ded]">Undefined and Null Use Cases</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                <div class="shadow-xl p-5 rounded-lg">
+                    <h2 class="text-4xl text-[#ff1f3ded] my-4">Undefined</h2>
+                    <p class="mb-4 text-[#3b3a3ac1]">A variable that is declared but not assigned a value automatically holds the value <em>undefined</em>.When an object property doesn't exist or a function parameter is missing, its value is undefined.</p>
+                    <ul class="list-disc list-inside">
+                        <li>As a default value for function parameters.</em>.</li>
+                        <li>To check if a variable has been assigned a value.</li>
+                        <li>When an expected value is not available, such as when fetching data from APIs.</li>
+                        <li>To indicate the absence of a property in an object.</li>
+                    </ul>
+                </div>
+                <div class="shadow-xl p-5 rounded-lg">
+                    <h2 class="text-4xl text-[#ff1f3ded] my-4">Null</h2>
+                    <p class="mb-4 text-[#3b3a3ac1]">Null is a value that represents the intentional absence of any object value. <em>Null</em> is explicitly assigned to indicate that a variable has no value</p>
+                    <ul class="list-disc list-inside">
+                        <li>To explicitly set a variable or object property to signify the absence of a value.</li>
+                        <li>As a way to reset or clear an object property.</li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+
+        <!-- what is REST APIs -->
+        <article class="w-11/12 mx-auto mt-10">
+            <h1 class="text-4xl font-bold text-[#ff1f3ded]">REST APIs</h1>
+            <p class="mb-4 text-[#3b3a3ac1] my-4">REST API stands for Representational State Transfer Application Programming Interface. It is a set of architectural principles and constraints used to design and develop web services that allow different software applications to communicate with each other over the internet.</p>
+
+            <h1 class="text-[#2d2d2dce]">REST is not a protocol, but rather a style of designing networked applications. It's built upon a few key principles:</h1>
+            <p class="font-semibold">Client-Server Architecture, Stateless, Uniform Interface, Code on Demand </p>
+
+            <p class="mb-4 text-[#3b3a3ac1] my-4">REST APIs are commonly used for building web services that provide data and services to other applications. They use HTTP methods to perform actions like retrieving data, creating new resources, updating existing resources, and deleting resources. Data is usually exchanged in common formats such as JSON or XML.</p>
+        </article>
     </main>
+
+    <!-- footer  -->
+    <footer class="text-center bg-[#c7e2f93a] py-10 spy-5">
+        <h3 class="text-[#1E2125] text-4xl font-bold">Learn <span class="text-[#ff1f3ded]">JS</span></h3>
+        <p class="font-semiboldbold text-[#3c3e41]">Copyright &#169; Naimur2023</p>
+        <p class="font-semiboldbold text-[#3c3e41]">Phone: 01568882935</p>
+        <p class="font-semiboldbold text-[#3c3e41]">Mail: naimur2935@gmail.com</p>
+    </footer>
 </body>
 </html>
