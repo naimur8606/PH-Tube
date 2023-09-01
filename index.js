@@ -52,8 +52,7 @@ const loadCategoriesDetails = (channels) => {
             </div>
             <div class="flex space-x-2">
                 <img class="w-[38px] h-[38px] rounded-[50%]" src="${channel?.authors[0]?.profile_picture}">
-                
-                <div class="space-y-2">
+                <div class="space-y-2 mb-3">
                     <h2 class="text-2xl font-semibold">${channel?.title}</h2>
                     <div class="flex items-center space-x-2">
                     <h5 class="text-xl text-[#5d5d5d] font-normal">${channel?.authors[0]?.profile_name}</h5>
