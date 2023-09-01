@@ -19,83 +19,60 @@ const catchCategoriesDetails = async (id="1000") => {
     const data = await res.json();
     loadCategoriesDetails(data?.data);
 }
+
+
+
 // publish the catchCategory Details in catchCategory Details filed
-const loadCategoriesDetails = (items) => {
-    const itemsDiv = document.getElementById("items");
-    itemsDiv.textContent = "";
-    if(items.length === 0){
-        document.getElementById("items-error").textContent="";
-        const defoltitem = document.createElement("div");
-        defoltitem.classList.add = "h-screen"
-        defoltitem.innerHTML=`
+const loadCategoriesDetails = (channels) => {
+    const channelsDiv = document.getElementById("channels");
+    channelsDiv.textContent = "";
+        const Empty = document.getElementById("empty")
+        Empty.textContent="";
+    if(channels.length === 0){
+        const emptyMsg = document.createElement("div");
+        emptyMsg.classList.add("h-screen")
+        emptyMsg.innerHTML=`
             <div class="flex mt-14 flex-col items-center text-center">
                 <img src="./Icon.png">
                 <h2 class="text-3xl font-bold">Oops!! Sorry, There is no content here</h2>
             </div>
         `
-        document.getElementById("items-error").appendChild(defoltitem);
+        Empty.appendChild(emptyMsg);
     }
-    items.forEach(item =>{
-        const itemDiv = document.createElement("div");
-        itemDiv.classList ="";
-        const hrs= parseInt(parseInt(item?.others?.posted_date) / 3600);
-        const min= parseInt(((parseInt(item?.others?.posted_date) / 3600)-hrs)*60);
-        const views = `<h3 class="h-6 text-right pr-2 relative bottom-10 text-[#f6f1f1] bg-[#352d2da8]">${hrs} hrs ${min} min ago </h3>`
-        itemDiv.innerHTML = `
+    channels.forEach(channel =>{
+        const channelDiv = document.createElement("div");
+        channelDiv.classList ="";
+        const hrs= parseInt(parseInt(channel?.others?.posted_date) / 3600);
+        const min= parseInt(((parseInt(channel?.others?.posted_date) / 3600)-hrs)*60);
+        const views = `<h3 class="h-6 text-right pr-2 relative bottom-10 text-[#f6f1f1] bg-[#352d2da8]">${hrs} hrs ${min} min ago </h3>`;
+        channelDiv.innerHTML = `
             <div>
-                <img class="h-[220px] w-[100%] rounded-lg" src="${item?.thumbnail}">
-                ${item?.others?.posted_date? views : "<h1 class='h-6'></h1>"}
+                <img class="h-[220px] w-[100%] rounded-lg" src="${channel?.thumbnail}">
+                ${channel?.others?.posted_date? views : "<h1 class='h-6'></h1>"}
             </div>
             <div class="flex space-x-2">
-                <img class="w-[38px] h-[38px] rounded-[50%]" src="${item?.authors[0]?.profile_picture}">
+                <img class="w-[38px] h-[38px] rounded-[50%]" src="${channel?.authors[0]?.profile_picture}">
                 
                 <div class="space-y-2">
-                    <h2 class="text-2xl font-semibold">${item?.title}</h2>
+                    <h2 class="text-2xl font-semibold">${channel?.title}</h2>
                     <div class="flex items-center space-x-2">
-                    <h5 class="text-xl text-[#5d5d5d] font-normal">${item?.authors[0]?.profile_name}</h5>
-                    <p>${ item?.authors[0]?.verified? '<img class="w-4" src="./checklist.png">' : ""} </p>
+                    <h5 class="text-xl text-[#5d5d5d] font-normal">${channel?.authors[0]?.profile_name}</h5>
+                    <p>${ channel?.authors[0]?.verified? '<img class="w-4" src="./checklist.png">' : ""} </p>
                     </div>
-                    <p class="text-[18px] text-[#5d5d5d] font-normal">${item?.others?.views} views</p>
+                    <p class="text-[18px] text-[#5d5d5d] font-normal">${channel?.others?.views} views</p>
                 </div>
             </div>
         `
-        itemsDiv.appendChild(itemDiv);
+        channelsDiv.appendChild(channelDiv);
     })
     document.querySelector(".sort").addEventListener("click",function(){
-        viewer(items)
+        sortViewer(channels)
     })
 }
 // try to make sort
-const viewer = (x) => {
-    const items = x.sort((a, b) => parseInt(b.others.views) - parseInt(a.others.views))
-    const itemsDiv = document.getElementById("items");
-    itemsDiv.textContent = "";
-    items.forEach(item =>{
-        const itemDiv = document.createElement("div");
-        itemDiv.classList ="";
-        const hrs= parseInt(parseInt(item?.others?.posted_date) / 3600);
-        const min= parseInt(((parseInt(item?.others?.posted_date) / 3600)-hrs)*60);
-        const views = `<h3 class="h-6 text-right pr-2 relative bottom-10 text-[#f6f1f1] bg-[#352d2da8]">${hrs} hrs ${min} min ago </h3>`
-        itemDiv.innerHTML = `
-            <div>
-                <img class="h-[220px] w-[100%] rounded-lg" src="${item?.thumbnail}">
-                ${item?.others?.posted_date? views : "<h1 class='h-6'></h1>"}
-            </div>
-            <div class="flex space-x-2">
-                <img class="w-[38px] h-[38px] rounded-[50%]" src="${item?.authors[0]?.profile_picture}">
-                
-                <div class="space-y-2">
-                    <h2 class="text-2xl font-semibold">${item?.title}</h2>
-                    <div class="flex items-center space-x-2">
-                    <h5 class="text-xl text-[#5d5d5d] font-normal">${item?.authors[0]?.profile_name}</h5>
-                    <p>${ item?.authors[0]?.verified? '<img class="w-4" src="./checklist.png">' : ""} </p>
-                    </div>
-                    <p class="text-[18px] text-[#5d5d5d] font-normal">${item?.others?.views} views</p>
-                </div>
-            </div>
-        `
-        itemsDiv.appendChild(itemDiv);
-    })
+const sortViewer = (channelList) => {
+    const channels = channelList.sort((a, b) => parseInt(b.others.views) - parseInt(a.others.views))
+    loadCategoriesDetails(channels);
 }
 
 catchCategories()
